@@ -1,0 +1,53 @@
+The last branch I was involved with is "namespaces" and has a simpler folder structure.
+Below are folder descriptions for current "develop" branch.
+
+WeaveASJS: ActionScript which gets compiled to JavaScript using FlexJS. TypeScript type definitions are generated with as2dts.
+	src/weavejs
+		api: interfaces (naming convention: interfaces start with letter "I")
+		core: core session state framework implementation
+		path: old JavaScript WeavePath API, makes it easy to manipulate Weave from outside (see http://info.iweave.com/projects/weave/wiki/JavaScript_API)
+		util: general-purpose utility classes
+
+WeaveTSJS: TypeScript which gets compiled to JavaScript. Meant to be decoupled from Weave Visualization App so it can be distributed separately and reused for a different purpose
+	src/org/vanrijkom: third-party SHP/DBF file parsing library
+	src/weavejs
+		api: interfaces and a few basic classes (naming convention: interfaces start with letter "I")
+		core: core framework implementation
+		data: data framework (questionable stability - I have not reviewed these since they were ported from AS)
+			bin: different ways of binning data
+			column: implementations of IAttributeColumn, each having a different purpose
+			hierarchy: code for data source hierarchies (each data source has a hierarchy of columns)
+			key: implementations of IKeySet, IKeyFilter, IQualifiedKeyManager, etc.
+			source: IDataSource implementations, each reading a different data format/service
+		geom: different types of geometric structures and indexes
+		net: related to network communications (protocols, services, caching)
+		path: related to WeavePath API
+		ui: User interface (general purpose, widgets)
+			flexbox: basic building blocks for laying out components on the page (VBox/HBox/Label/Section)
+			layout: code for treemap-like panel layout (similar to Eclipse IDE, Spotfire)
+			menu: generic right-click (context) menu and drop-down menu code
+		util: general purpose utility classes
+	typings: Third-party library type definitions. Some don't need to be here if we update the build setup.
+
+WeaveApp: higher-level TypeScript React components, visualizations, Weave visualization application
+	resources: CSS, images, fonts, demo files...
+	src/weaveapp
+		admin: UI for managing Weave server
+		api/ui: interfaces for plotters, vis tool
+		data/source/SpatialJoinTransform.ts: - An IDataSource that depends on OpenLayers.
+		dialog: specific popup dialogs
+		editor: Editor UI for specific linkable objects
+		geom/net_ivank_voronoi: third-party library for computing voronoi diagrams
+		geom/radviz: Math code for RadViz data visualization
+		layout: implementations for different panel layouts (FlexibleLayout, WindowLayout, TabLayout)
+		menu: implementations for specific drop-down menus
+		modules: stubs for third-party libraries. May not be necessary if project setup is fixed.
+		plot: Unfinished port for old layered plotter framework using PIXI.js
+		tool: Data visualization tools
+			c3tool: Tools using C3
+			d3tool: Tools using D3
+			oltool: Map tool using Open Layers
+		ui: High-level UI components specific to the data visualization app
+		util: utility classes
+	typings: Third-party library type definitions. Some don't need to be here if we update the build setup.
+	
