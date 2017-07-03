@@ -9,7 +9,7 @@
 - Layered visualization engine
 - Data sources: WFS, Socrata, Partition, Transpose
 - Equation column editor
-- Session editor incompleteq1a
+- Session editor incomplete
 - Various tools still in beta (unfinished)
 
 **What features are missing from Weave?**
